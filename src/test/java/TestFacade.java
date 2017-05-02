@@ -7,10 +7,8 @@
 import entity.Facade;
 import entity.Project;
 import entity.ProjectUser;
-import exceptions.ProjectNotFoundException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,58 +17,51 @@ import static org.mockito.Mockito.when;
 
 /**
  *
- * @author jonassimonsen
+ * @author Mazlum
  */
 public class TestFacade {
 
-    EntityManagerFactory emf;
+    EntityManagerFactory emfac;
     EntityManager em;
     Facade facade;
 
-    public TestFacade() {
-    }
 
     @Before
     public void setUp() {
-        emf = mock(EntityManagerFactory.class);
+        emfac = mock(EntityManagerFactory.class);
         em = mock(EntityManager.class);
         facade = mock(Facade.class);
     }
 
-    @After
-    public void tearDown() {
-        emf.close();
-        em.close();
-    }
+
 
     @Test
-    public void testFindUser() {
-        ProjectUser user = new ProjectUser();
+    public void FindUser(ProjectUser pUser) {
 
-        long id = 1;
-        user.setId(id);
-        user.setEmail("test@tester.dk");
-        user.setUserName("testUserName");
 
-        when(emf.createEntityManager()).thenReturn(em);
+        long id = 5;
+        pUser.setId(id);
+        pUser.setEmail("user@tester.dk");
+        pUser.setUserName("UserName");
+
+        when(emfac.createEntityManager()).thenReturn(em);
         when(facade.getEM()).thenReturn(em);
-        when(em.find(ProjectUser.class, id)).thenReturn(user);
-        when(facade.findUser(id)).thenReturn(user);
+        when(em.find(ProjectUser.class, id)).thenReturn(pUser);
+        when(facade.findUser(id)).thenReturn(pUser);
 
         ProjectUser returnUser = facade.findUser(id);
-        assertEquals(user, returnUser);
+        assertEquals(pUser, returnUser);
     }
 
     @Test
-    public void testFindProject() throws ProjectNotFoundException {
-        Project project = new Project();
+    public void FindProject(Project project )  {
 
-        long id = 1;
+        long id = 5;
         project.setId(id);
-        project.setDescription("testProjectDescription");
-        project.setName("testProjectName");
+        project.setDescription("projectDescription");
+        project.setName("project");
 
-        when(emf.createEntityManager()).thenReturn(em);
+        when(emfac.createEntityManager()).thenReturn(em);
         when(facade.getEM()).thenReturn(em);
         when(em.find(Project.class, id)).thenReturn(project);
         when(facade.findProject(id)).thenReturn(project);
@@ -78,4 +69,5 @@ public class TestFacade {
         Project found = facade.findProject(id);
         assertEquals(project, found);
     }
+
 }

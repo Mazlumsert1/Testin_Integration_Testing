@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package entity;
-
-import exceptions.ProjectNotFoundException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,7 +11,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author sofus
+ * @author Mazlum
  */
 public class Facade {
 
@@ -46,39 +44,13 @@ public class Facade {
         return em.createNamedQuery("ProjectUser.findAll", ProjectUser.class).getResultList();
     }
 
-    public void deleteUser(Long id) {
-        EntityManager em = getEM();
-        em.getTransaction().begin();
-        em.remove(em.find(ProjectUser.class, id));
-        em.getTransaction().commit();
-    }
-
-    public Project createProject(Project p) {
-        EntityManager em = getEM();
-        em.getTransaction().begin();
-        em.persist(p);
-        em.getTransaction().commit();
-        return p;
-    }
-
-    public void assignUserToProject(Long projectID, Long userID) {
-        EntityManager em = getEM();
-        ProjectUser pu = em.find(ProjectUser.class, userID);
-        em.getTransaction().begin();
-        pu.setContributor(em.find(Project.class, projectID));
-        em.getTransaction().commit();
-    }
-
     public List<Project> getProjects() {
         EntityManager em = getEM();
         return em.createNamedQuery("Project.findAll", Project.class).getResultList();
     }
 
-    public Project findProject(Long id) throws ProjectNotFoundException {
+    public Project findProject(Long id) {
         EntityManager em = getEM();
-        if (em.find(Project.class, id) == null) {
-            throw new ProjectNotFoundException();
-        }
         return em.find(Project.class, id);
     }
 

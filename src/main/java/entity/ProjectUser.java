@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author sofus
+ * @author Mazlum
  */
 @Entity
 @NamedQueries({
