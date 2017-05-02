@@ -1,6 +1,5 @@
 ### Integration - Mock exercise
 
-Using old project from datamatiker 3'rd semester
+I am using a project we made together with our teacher Sofus at 3´rd semester on the datamatiker studie.
 
-Testing findUser and findProject
-using mockito
+I am testing findUser and findProject, using mockito.
