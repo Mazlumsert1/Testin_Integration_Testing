@@ -1,13 +1,6 @@
-I have made 2 tests using a old project from datamatiker 3 semester.
-I have tested the findUser and findProject, which both look at the database 
-through a facade.
+I have made 2 tests using a old project from datamatiker 3rd semester we made together with out teacher Sofus. I have made to tests, the findUser and findProject test, both tests looks at the facebase through a facade. 
 
-In my tests i mock the connection to the database using mockito, specifying
-what i want it to return to me.
+In my tests i mock the connection to the database using mockito, where I specifying what i want it to return.
 
-Another way this could have been done, is to set up a new database which is used
-for testing only.
-and at the start of each test, you delete all data and insert some.
-this will ensure that you always have the same data at the start of each test.
-and you will only need to change which database you use, and wont necesarily 
+This could also have been done in another way where we set up a new database which is used for testing only and at the start of each test, we could delete all data and then insert them again. By doing this we will ensure that we always have the same data at the start of each test and you will only need to change which database you use, and wont necesarily 
 have to mock anything away.
