@@ -1,0 +1,11 @@
+entity/Project.class
+entity/ProjectUser.class
+exceptions/ProjectNotFoundException.class
+entity/Facade.class
+exceptions/NotFoundExceptionsMapper.class
+exceptions/GenerelExceptionMapper.class
+rest/ApplicationConfig.class
+rest/ProjectUserRestSerice.class
+jps/tester/Tester.class
+exceptions/ProjectNotFoundExceptionMapper.class
+rest/ProjectRestService.class
